@@ -36,14 +36,9 @@
                         ]
                     }
                 },
-                methods:{
-                    freezeChat(){
-                        this.chats.push({message:"...",peerId:"others"});
-                    }
-                },
                 mounted() {
                     setInterval(() => {
-                        this.freezeChats();
+                        chats.push({message:"...",peerId:"others"});
                     }, 1000)
                 }
             });
