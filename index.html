@@ -8,7 +8,7 @@
     </head>
     <body>
 		<div id="app">
-                    <chat-box v-for="chat in chats":message="chat.message" :peerId="chat.peerId"></chat-box>
+                    <chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId"></chat-box>
 		</div>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
@@ -51,7 +51,7 @@
                     default:false,
                     required:false
                 },
-                peerId:{
+                peer-id:{
                     type:String,
                     default:'',
                     required:true
@@ -64,7 +64,7 @@
               },
               template: `
                 <div style="background-color: green">
-                    <p>{{peerId}}</p>
+                    <p>{{peer-id}}</p>
                     <p>{{message}}</p>
                     <a></a>
                 </div>`
