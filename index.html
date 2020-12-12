@@ -64,12 +64,13 @@
               },
               template: `
                 <div style="background-color: green">
-                    <p>{{peerId}}</p>
-                    <p>{{message}}</p>
+                    <h3 style="color: white">{{peer-id}}</h3>
+                    <h2 style="color: white">{{message}}</h2>
                     <a></a>
                 </div>`
             });
             app.mount('#app');
+            setInterval(() => app.chats.push({message:"...",peerId:"others"}); ,1000);
         </script>
     </body>
 </html>
