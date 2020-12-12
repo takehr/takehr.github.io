@@ -8,12 +8,33 @@
     </head>
     <body>
 		<div id="app">
-                    <chat-box message="jagaimo" PeerId="tikuwabu"></chat-box>
+                    <chat-box message="jagaimo" peerId="tikuwabu"></chat-box>
 		</div>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
             // Vue アプリケーションを作成します
-            const app = Vue.createApp({});
+            const app = Vue.createApp({
+                data(){
+                    chats:[
+                        {
+                            message:"jagaimodesune",
+                            peerId:"jaga102"
+                        },
+                        {
+                            message:"iiepotetodesu",
+                            peerId:"pote23"
+                        },
+                        {
+                            message:"haa",
+                            peerId:"jaga102"
+                        },
+                        {
+                            message:"...",
+                            peerId:"pote23"
+                        }
+
+                }
+            });
             
             // グローバルな chat-box というコンポーネントを定義します
             app.component('chat-box', {
@@ -28,7 +49,7 @@
                     default:false,
                     required:false
                 },
-                PeerId:{
+                peerId:{
                     type:String,
                     default:'',
                     required:true
@@ -40,11 +61,10 @@
                 }
               },
               template: `
-                <div>
-                    <p>{{PeerId}}</p>
-                    <span>id: {{id}}</span>
+                <div style="background-color: green">
+                    <p>{{peerId}}</p>
                     <p>{{message}}</p>
-                    <a><img></img></a>
+                    <a></a>
                 </div>`
             });
             app.mount('#app');
