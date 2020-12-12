@@ -13,10 +13,8 @@
         <script src="https://unpkg.com/vue@next"></script>
         <script>
             // Vue アプリケーションを作成します
-            const app = Vue.createApp({
-                data(){
-                    return {
-                        chats:[
+            const chats = 
+                        [
                             {
                                 message:"jagaimodesune",
                                 peerId:"jaga102"
@@ -33,7 +31,10 @@
                                 message:"...",
                                 peerId:"pote23"
                             }
-                        ]
+                        ];
+            const app = Vue.createApp({
+                data(){
+                    return chats;
                     }
                 },
                 mounted() {
