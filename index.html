@@ -37,8 +37,7 @@
                 data(){
                     return data;
                 }
-            }).mount("#app");
-            console.log(app.chats);
+            });
             // グローバルな chat-box というコンポーネントを定義します
             app.component('chat-box', {
               props:{
@@ -71,6 +70,7 @@
                 </div>`
             });
             app.mount('#app');
+            console.log(app.chats);
 //            data.chats.push({message:"hoeee",peerId:"other"});
 //            setInterval(()=>data.chats.push({message:"hoeee",peerId:"other"}),1000);
         </script>
