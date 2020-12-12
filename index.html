@@ -35,6 +35,11 @@
                             }
                         ]
                     }
+                },
+                methods:{
+                    freezeChat(){
+                        this.chats.push({message:"...",peerId:"others"});
+                    }
                 }
             });
             
@@ -70,7 +75,7 @@
                 </div>`
             });
             app.mount('#app');
-            setInterval(() => app.chats.push({message:"...",peerId:"others"}),1000);
+            setInterval(app.freezeChat(),1000);
         </script>
     </body>
 </html>
