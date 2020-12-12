@@ -3,42 +3,51 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Vue-Demo</title>
+        <title>VueComponentTest</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     </head>
     <body>
-		<div class="jumbotron">
-			<div class="container">
-                <h3>Demo - <small>Vue.js</small></h3>
-                <hr class="my-4">
-                <p class="lead">asdf as asdfasdfasd fasdfasdf asdfasd fasdfasd fasdfasd</p> 
-			</div>
-		</div>
 		<div id="app">
-			<div class="container">
-				<ul class="list-group">
-					<li v-for="(fruit,index) in fruits" class="list-group-item">
-						{{ index+1 + '. ' + fruit }}	
-					</li>
-				</ul>
-				<div class="py-3">
-					Fruits : {{ fruits }}
-				</div>
-			</div>
+                    <chat-box message="jagaimo" PeerId="tikuwabu"></chat-box>
 		</div>
-        <script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+        <script src="https://unpkg.com/vue@next"></script>
         <script>
-        	new Vue({
-				el: '#app',
-				data: {
-					fruits : [
-						"Apple",
-						"Banana",
-						"Cherries",
-						"Orange",
-					]
-				}
-			});
+            // Vue アプリケーションを作成します
+            const app = Vue.createApp({});
+            
+            // グローバルな chat-box というコンポーネントを定義します
+            app.component('chat-box', {
+              props:{
+                message:{
+                    type:String,
+                    default:'',
+                    required:false
+                },
+                own:{
+                    type:Boolean,
+                    default:false,
+                    required:false
+                },
+                PeerId:{
+                    type:String,
+                    default:'',
+                    required:true
+                },
+                base64:{
+                    type:String,
+                    default:'',
+                    required:false
+                }
+              template: `
+                <div>
+                    <p>{{PeerId}}</p>
+                    <span>id: {{id}}</span>
+                    <p>{{message}}</p>
+                    <a><img></img></a>
+                </div>
+            });
+            app.mount('#app');
+
         </script>
     </body>
 </html>
