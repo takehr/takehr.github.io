@@ -42,7 +42,7 @@
                     }
                 }
             });
-            
+            setInterval(app.freezeChat(),1000);
             // グローバルな chat-box というコンポーネントを定義します
             app.component('chat-box', {
               props:{
@@ -75,7 +75,6 @@
                 </div>`
             });
             app.mount('#app');
-            setInterval(app.freezeChat(),1000);
         </script>
     </body>
 </html>
