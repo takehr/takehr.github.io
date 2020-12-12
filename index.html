@@ -12,34 +12,8 @@
 		</div>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
-            // Vue アプリケーションを作成します
-            const data={
-                chats:[
-                    {
-                        message:"jagaimodesune",
-                        peerId:"jaga102"
-                    },
-                    {
-                        message:"iiepotetodesu",
-                        peerId:"pote23"
-                    },
-                    {
-                        message:"haa",
-                        peerId:"jaga102"
-                    },
-                    {
-                        message:"...",
-                        peerId:"pote23"
-                    }
-               ]
-            };
-            const app = Vue.createApp({
-                data(){
-                    return data;
-                }
-            });
-            // グローバルな my-chat-box というコンポーネントを定義します
-            app.component('my-chat-box', {
+            // ローカルな my-chat-box というコンポーネントを定義します
+            const myChatBox = {
               props:{
                 message:{
                     type:String,
@@ -68,6 +42,34 @@
                     <h2 style="color: white">{{message}}</h2>
                     <a></a>
                 </div>`
+            });
+            const data={
+                chats:[
+                    {
+                        message:"jagaimodesune",
+                        peerId:"jaga102"
+                    },
+                    {
+                        message:"iiepotetodesu",
+                        peerId:"pote23"
+                    },
+                    {
+                        message:"haa",
+                        peerId:"jaga102"
+                    },
+                    {
+                        message:"...",
+                        peerId:"pote23"
+                    }
+               ]
+            };
+            const app = Vue.createApp({
+                components:{
+                    'my-chat-box':myChatBox
+                },
+                data(){
+                    return data;
+                }
             }).mount("#app");
             console.log(app.chats);
 //            data.chats.push({message:"hoeee",peerId:"other"});
