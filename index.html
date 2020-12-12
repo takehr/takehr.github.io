@@ -8,7 +8,7 @@
     </head>
     <body>
 		<div id="app">
-                    <chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId"></chat-box>
+                    <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId"></my-chat-box>
 		</div>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
@@ -37,10 +37,9 @@
                 data(){
                     return data;
                 }
-            }).mount("#app");
-            // グローバルな chat-box というコンポーネントを定義します
-            const app2=Vue.createApp({});
-            app2.component('chat-box', {
+            });
+            // グローバルな my-chat-box というコンポーネントを定義します
+            app.component('my-chat-box', {
               props:{
                 message:{
                     type:String,
@@ -69,8 +68,7 @@
                     <h2 style="color: white">{{message}}</h2>
                     <a></a>
                 </div>`
-            });
-            app2.mount('#app');
+            }).mount("#app");
             console.log(app.chats);
 //            data.chats.push({message:"hoeee",peerId:"other"});
 //            setInterval(()=>data.chats.push({message:"hoeee",peerId:"other"}),1000);
