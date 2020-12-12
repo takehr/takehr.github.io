@@ -37,9 +37,10 @@
                 data(){
                     return data;
                 }
-            });
+            }).mount("#app");
             // グローバルな chat-box というコンポーネントを定義します
-            app.component('chat-box', {
+            const app2=Vue.createApp();
+            app2.component('chat-box', {
               props:{
                 message:{
                     type:String,
@@ -69,7 +70,7 @@
                     <a></a>
                 </div>`
             });
-            app.mount('#app');
+            app2.mount('#app');
             console.log(app.chats);
 //            data.chats.push({message:"hoeee",peerId:"other"});
 //            setInterval(()=>data.chats.push({message:"hoeee",peerId:"other"}),1000);
