@@ -39,7 +39,7 @@
                 }
             }).mount("#app");
             // グローバルな chat-box というコンポーネントを定義します
-            const app2=Vue.createApp();
+            const app2=Vue.createApp({});
             app2.component('chat-box', {
               props:{
                 message:{
