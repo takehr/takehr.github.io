@@ -38,7 +38,7 @@
                 },
                 mounted() {
                     setInterval(() => {
-                        chats.push({message:"...",peerId:"others"});
+                        this.chats.push({message:"...",peerId:"others"});
                     }, 1000)
                 }
             });
