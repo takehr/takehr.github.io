@@ -8,31 +8,33 @@
     </head>
     <body>
 		<div id="app">
-                    <chat-box message="jagaimo" peerId="tikuwabu"></chat-box>
+                    <chat-box v-for="chat in chats":message="chat.message" :peerId="chat.peerId"></chat-box>
 		</div>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
             // Vue アプリケーションを作成します
             const app = Vue.createApp({
                 data(){
-                    chats:[
-                        {
-                            message:"jagaimodesune",
-                            peerId:"jaga102"
-                        },
-                        {
-                            message:"iiepotetodesu",
-                            peerId:"pote23"
-                        },
-                        {
-                            message:"haa",
-                            peerId:"jaga102"
-                        },
-                        {
-                            message:"...",
-                            peerId:"pote23"
-                        }
-                    ]
+                    return {
+                        chats:[
+                            {
+                                message:"jagaimodesune",
+                                peerId:"jaga102"
+                            },
+                            {
+                                message:"iiepotetodesu",
+                                peerId:"pote23"
+                            },
+                            {
+                                message:"haa",
+                                peerId:"jaga102"
+                            },
+                            {
+                                message:"...",
+                                peerId:"pote23"
+                            }
+                        ]
+                    }
                 }
             });
             
@@ -68,7 +70,6 @@
                 </div>`
             });
             app.mount('#app');
-
         </script>
     </body>
 </html>
