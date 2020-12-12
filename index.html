@@ -36,11 +36,6 @@
             const app = Vue.createApp({
                 data(){
                     return data;
-//                },
-//                mounted() {
-//                    setInterval(() => {
-//                        this.chats.push({message:"...",peerId:"others"});
-//                    }, 1000)
                 }
             });
             // グローバルな chat-box というコンポーネントを定義します
@@ -75,6 +70,7 @@
                 </div>`
             });
             app.mount('#app');
+            setInterval(()=>chats.push({message:"hoeee",peerId:"other"}));
         </script>
     </body>
 </html>
