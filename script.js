@@ -23,7 +23,8 @@ const anchorFile = document.getElementById('anchor-file');
 buttonSendText.onclick= () => room.send(inputText.value);
 buttonSendFiles.onclick= () => {
 //    console.log(window.webkitURL.createObjectURL(inputFiles.files));
-      inputFiles.files[0].arrayBuffer().then((buffer)=>room.send(buffer));
+      const file = inputFiles.files[0];
+      file.arrayBuffer().then((buffer)=>room.send({name:file.name,data:buffer}));
 //    room.send(inputFiles.files);
 //    const file = inputFiles.files[0];
 //    var fileReader = new FileReader() ;
@@ -88,10 +89,9 @@ function geoFindMe(){
                 });
                 room.on('data', ({ data, src }) => {
                     if(typeof(data)==="string"){
-                        alert(src);
+                        app.chats.push({message:data, peerId:src});
                     }else{
-                      console.log(typeof(data));
-                      const myBlob = new Blob([data]);
+                        const myBlob = new Blob([data.data]);
 //                      console.log(myBlob);
 //                      console.log(window.webkitURL.createObjectURL(myBlob));
 
@@ -100,6 +100,7 @@ function geoFindMe(){
                       const reader = new FileReader();
                       reader.addEventListener("load", function () {
                           anchorFile.setAttribute("href",reader.result);
+                          anchorFile.setAttribute("download",data.name);
                       });
 //                      if (file) {
                       reader.readAsDataURL(myBlob);
