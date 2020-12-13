@@ -9,7 +9,7 @@
     <body>
         <div class="container" style="display:flex; flex-direction:column; min-height:100vh">
 		<div id="app" style="flex:1">
-                    <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId"></my-chat-box>
+                    <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId" :own="chat.own" :base64="chat.base64" :file-name="chat.fileName"></my-chat-box>
 		</div>
                 <div id="input-box" style="height:120px; width:100%; position:sticky; bottom:0px">
                 <input type="file" multiple id="input-files">
@@ -43,13 +43,18 @@
                     type:String,
                     default:'',
                     required:false
+                },
+                fileName:{
+                    type:String,
+                    default:"",
+                    required:false
                 }
               },
               template: `
                 <div style="background-color: green">
                     <h3 style="color: white">{{peerId}}</h3>
-                    <h2 style="color: white">{{message}}</h2>
-                    <a></a>
+                    <h2 v-if="message"style="color: white">{{message}}</h2>
+                    <a v-if="fileName" :download="fileName" :href="base64">{{fileName}}</a>
                 </div>`
             };
             const data={

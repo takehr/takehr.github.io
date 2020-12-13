@@ -92,7 +92,7 @@ function geoFindMe(){
                 });
                 room.on('data', ({ data, src }) => {
                     if(typeof(data)==="string"){
-                        app.chats.push({message:data, peerId:src});
+                        app.chats.push({message:data, peerId:src, own:false});
                     }else{
                         const myBlob = new Blob([data.data]);
 //                      console.log(myBlob);
@@ -102,6 +102,7 @@ function geoFindMe(){
 
                       const reader = new FileReader();
                       reader.addEventListener("load", function () {
+                          app.chats.push({peerId:window.peer.id, base64:render.result, fileName:data.name});
                           anchorFile.setAttribute("href",reader.result);
                           anchorFile.setAttribute("download",data.name);
                       });
