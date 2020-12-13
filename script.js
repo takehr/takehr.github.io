@@ -15,7 +15,6 @@ firebase.analytics();
 var database = firebase.database();
 var roomId=null;
 var room;
-var _data;
 const buttonSendText = document.getElementById('button-send-text');
 const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
@@ -89,9 +88,8 @@ function geoFindMe(){
                 });
                 room.on('data', ({ data, src }) => {
                     if(typeof(data)==="string"){
-                        alert(data);
+                        alert(src);
                     }else{
-                      _data = data;
                       console.log(typeof(data));
                       const myBlob = new Blob([data]);
 //                      console.log(myBlob);
