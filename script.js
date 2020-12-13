@@ -20,7 +20,10 @@ const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
 const inputFiles = document.getElementById('input-files');
 const anchorFile = document.getElementById('anchor-file');
-buttonSendText.onclick= () => room.send(inputText.value);
+buttonSendText.onclick= () => {
+    room.send(inputText.value);
+    app.chats.push({message:inputText, peerId:window.peer.id});
+}
 buttonSendFiles.onclick= () => {
 //    console.log(window.webkitURL.createObjectURL(inputFiles.files));
       const file = inputFiles.files[0];
