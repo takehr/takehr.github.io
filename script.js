@@ -102,7 +102,7 @@ function geoFindMe(){
 
                       const reader = new FileReader();
                       reader.addEventListener("load", function () {
-                          app.chats.push({peerId:window.peer.id, base64:render.result, fileName:data.name});
+                          app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false});
                           anchorFile.setAttribute("href",reader.result);
                           anchorFile.setAttribute("download",data.name);
                       });
