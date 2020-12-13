@@ -22,7 +22,7 @@ const inputFiles = document.getElementById('input-files');
 const anchorFile = document.getElementById('anchor-file');
 buttonSendText.onclick= () => {
     room.send(inputText.value);
-    app.chats.push({message:inputText, peerId:window.peer.id});
+    app.chats.push({message:inputText.value, peerId:window.peer.id});
 }
 buttonSendFiles.onclick= () => {
 //    console.log(window.webkitURL.createObjectURL(inputFiles.files));
