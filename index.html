@@ -7,9 +7,15 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     </head>
     <body>
-		<div id="app">
+        <div class="container" style="display:flex; flex-direction:column">
+		<div id="app" style="flex:1">
                     <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId"></my-chat-box>
 		</div>
+                <div id="input-box" style="height:120px; width:100%">
+                    <input type="text" id="input-text" style="width:80%; height:100%">
+                    <button id="button-send-text">send</button>
+                </div>
+        </div>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
             // ローカルな my-chat-box というコンポーネントを定義します
