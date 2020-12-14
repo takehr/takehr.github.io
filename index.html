@@ -7,11 +7,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     </head>
     <body>
-        <div class="container" style="height:100%">
-		<div id="app" style="height:80%">
+        <div class="container" style="min-height:100%">
+		<div id="app" style="min-height:80vh">
                     <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId" :own="chat.own" :base64="chat.base64" :file-name="chat.fileName"></my-chat-box>
 		</div>
-                <div id="input-box" style="height:120px; width:100%; position:sticky; bottom:0px">
+                <div id="input-box" style="min-height:120px; width:100%; position:sticky; bottom:0px">
                     <input type="file" multiple id="input-files">
                     <button id="button-send-files">send</button>
                     <a download="mu-min.jpg" href="" id="anchor-file">Download</a>
