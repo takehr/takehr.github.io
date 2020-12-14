@@ -93,6 +93,7 @@ function geoFindMe(){
                 room.on('data', ({ data, src }) => {
                     if(typeof(data)==="string"){
                         app.chats.push({message:data, peerId:src, own:false});
+                        document.querySelector("#app div:last-child").scrollIntoView(false);
                     }else{
                         const myBlob = new Blob([data.data]);
 //                      console.log(myBlob);
