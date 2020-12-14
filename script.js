@@ -22,7 +22,6 @@ const inputFiles = document.getElementById('input-files');
 buttonSendText.onclick= () => {
     room.send(inputText.value);
     app.chats.push({message:inputText.value, peerId:window.peer.id});
-    document.querySelector("#app div:last-child").scrollIntoView(false);
 }
 buttonSendFiles.onclick= () => {
 //    console.log(window.webkitURL.createObjectURL(inputFiles.files));
@@ -93,7 +92,6 @@ function geoFindMe(){
                 room.on('data', ({ data, src }) => {
                     if(typeof(data)==="string"){
                         app.chats.push({message:data, peerId:src, own:false});
-                        document.querySelector("#app div:last-child").scrollIntoView(false);
                     }else{
                         const myBlob = new Blob([data.data]);
 //                      console.log(myBlob);
@@ -104,7 +102,6 @@ function geoFindMe(){
                       const reader = new FileReader();
                       reader.addEventListener("load", function () {
                           app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false});
-                          document.querySelector("#app div:last-child").scrollIntoView(false);
                       });
 //                      if (file) {
                       reader.readAsDataURL(myBlob);
