@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container" style="min-height:100%">
-		<div id="app" style="min-height:80vh">
+		<div id="app" style="min-height:80vh; max-height:80vh">
                     <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId" :own="chat.own" :base64="chat.base64" :file-name="chat.fileName"></my-chat-box>
 		</div>
                 <div id="input-box" style="min-height:120px; width:100%; position:sticky; bottom:0px">
