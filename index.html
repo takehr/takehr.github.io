@@ -70,7 +70,7 @@
                 <div style="background-color: green">
                     <h3 style="color: white">{{peerId}}</h3>
                     <h2 v-if="message" style="color: white">{{message}}</h2>
-                    <a v-if="fileName" :download="fileName" :href="base64">{{fileName}}</a>
+                    <h2><a v-if="fileName" :download="fileName" :href="base64">{{fileName}}</a></h2>
                 </div>`
             };
             const data={

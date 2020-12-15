@@ -35,6 +35,7 @@ buttonSendText.onclick= () => {
         room.send(inputText.value);
         app.chats.push({message:inputText.value, peerId:window.peer.id});
     }
+    inputText.value=null
     inputFiles.files=null;
 }
 window.onresize=function(){
