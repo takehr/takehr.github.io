@@ -17,8 +17,8 @@
         </style>
     </head>
     <body>
-        <div>
-		<div id="app" style="min-height:80vh; max-height:80vh; overflow:scroll">
+        <div style="display:flex; flex-direction:column; min-height:100vh;">
+		<div id="app" style="flex:1; overflow:scroll;">
                     <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId" :own="chat.own" :base64="chat.base64" :file-name="chat.fileName"></my-chat-box>
 		</div>
                 <div id="input-box" style="min-height:60px; width:100%; position:fixed; bottom:0px; background:#f0f0f0; padding:8px 0px 0px">
