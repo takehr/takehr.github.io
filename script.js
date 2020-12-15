@@ -24,12 +24,13 @@ buttonSendText.onclick= () => {
     if(file){
         file.arrayBuffer().then((buffer)=>{
             room.send({name:file.name,data:buffer,message:inputText.value,peerId:window.peer.id});
+            const myBlob = new Blob([data.data]);
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:inputText.value});
+            });
+            reader.readAsDataURL(myBlob);
         });
-        const reader = new FileReader();
-        reader.addEventListener("load", function () {
-            app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:inputText.value});
-        });
-        reader.readAsDataURL(myBlob);
     }else{
         room.send(inputText.value);
         app.chats.push({message:inputText.value, peerId:window.peer.id});
