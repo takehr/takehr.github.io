@@ -36,7 +36,7 @@ buttonSendText.onclick= () => {
         app.chats.push({message:inputText.value, peerId:window.peer.id});
     }
     inputText.value=null;
-    document.input-files.reset();
+    inputFiles.value=null;
 }
 window.onresize=function(){
 
