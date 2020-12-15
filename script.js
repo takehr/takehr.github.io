@@ -48,7 +48,7 @@ buttonSendFiles.onclick= () => {
 inputFiles.onchange= () => {
     const files=inputFiles.files;
     for (let i=0;i<files.length;i++){
-        console.log(`${files[i].name}: ${returnFileSize(files[i].size)}`);
+        inputText.value = `${files[i].name}: ${returnFileSize(files[i].size)}`;
     }
 };
 
