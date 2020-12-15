@@ -17,7 +17,7 @@
         </style>
     </head>
     <body>
-        <div style="min-height:100%">
+        <div>
 		<div id="app" style="min-height:80vh; max-height:80vh; overflow:scroll">
                     <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId" :own="chat.own" :base64="chat.base64" :file-name="chat.fileName"></my-chat-box>
 		</div>
