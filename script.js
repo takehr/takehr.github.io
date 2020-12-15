@@ -20,10 +20,19 @@ const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
 const inputFiles = document.getElementById('input-files');
 buttonSendText.onclick= () => {
-    //room.send(inputText.value);
-    //app.chats.push({message:inputText.value, peerId:window.peer.id});
     const file = inputFiles.files[0];
-    file.arrayBuffer().then((buffer)=>room.send({name:file.name,data:buffer,message:inputText.value,peerId:window.peer.id}));
+    if(file){
+        file.arrayBuffer().then((buffer)=>{
+            room.send({name:file.name,data:buffer,message:inputText.value,peerId:window.peer.id});
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:inputText.value});
+            });
+            reader.readAsDataURL(myBlob);
+    }else{
+        room.send(inputText.value);
+        app.chats.push({message:inputText.value, peerId:window.peer.id});
+    }
     inputFiles.files=null;
 }
 window.onresize=function(){
@@ -33,8 +42,8 @@ document.querySelector("#app").setAttribute("style","height:"+(window.innerHeigh
 
 buttonSendFiles.onclick= () => {
 //    console.log(window.webkitURL.createObjectURL(inputFiles.files));
-      const file = inputFiles.files[0];
-      file.arrayBuffer().then((buffer)=>room.send({name:file.name,data:buffer}));
+//      const file = inputFiles.files[0];
+//      file.arrayBuffer().then((buffer)=>room.send({name:file.name,data:buffer}));
 //    room.send(inputFiles.files);
 //    const file = inputFiles.files[0];
 //    var fileReader = new FileReader() ;
@@ -109,7 +118,7 @@ function geoFindMe(){
 
                       const reader = new FileReader();
                       reader.addEventListener("load", function () {
-                          app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false});
+                          app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false,message:data.message});
                       });
 //                      if (file) {
                       reader.readAsDataURL(myBlob);
