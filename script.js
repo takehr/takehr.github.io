@@ -20,8 +20,11 @@ const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
 const inputFiles = document.getElementById('input-files');
 buttonSendText.onclick= () => {
-    room.send(inputText.value);
-    app.chats.push({message:inputText.value, peerId:window.peer.id});
+    //room.send(inputText.value);
+    //app.chats.push({message:inputText.value, peerId:window.peer.id});
+    const file = inputFiles.files[0];
+    file.arrayBuffer().then((buffer)=>room.send({name:file.name,data:buffer,message:inputText.value,peerId:window.peer.id}));
+    inputFiles.files=null;
 }
 window.onresize=function(){
 
