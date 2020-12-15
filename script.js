@@ -23,6 +23,11 @@ buttonSendText.onclick= () => {
     room.send(inputText.value);
     app.chats.push({message:inputText.value, peerId:window.peer.id});
 }
+window.onresize=function(){
+
+document.querySelector("#app").setAttribute("style","height:"+(window.innerHeight-60)+"px; overflow:scroll;");
+};
+
 buttonSendFiles.onclick= () => {
 //    console.log(window.webkitURL.createObjectURL(inputFiles.files));
       const file = inputFiles.files[0];
