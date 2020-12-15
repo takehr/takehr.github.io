@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" style="height:100%">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,9 +16,9 @@
             }
         </style>
     </head>
-    <body>
-        <div style="min-height:100vh;">
-		<div id="app" style="display:absolute; height: calc(100vh - 60px); overflow:scroll;">
+    <body style:"height:100%">
+        <div style="height:100%;">
+		<div id="app" style="display:absolute; height: calc(100% - 60px); overflow:scroll;">
                     <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId" :own="chat.own" :base64="chat.base64" :file-name="chat.fileName"></my-chat-box>
 		</div>
                 <div id="input-box" style="height:60px; width:100%; position:fixed; bottom:0px; background:#f0f0f0; padding:8px 0px 0px">
