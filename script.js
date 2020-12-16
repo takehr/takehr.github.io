@@ -29,11 +29,11 @@ buttonSendText.onclick= () => {
     const file = inputFiles.files[0];
     if(file){
         file.arrayBuffer().then((buffer)=>{
-            room.send({name:file.name,data:buffer,message:inputText.value,peerId:window.peer.id,myColor:myColor});
+            room.send({name:file.name,data:buffer,message:`${file.name}: ${returnFileSize(file.size)}`,peerId:window.peer.id,myColor:myColor});
             const myBlob = new Blob([buffer]);
             const reader = new FileReader();
             reader.addEventListener("load", function () {
-                app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:inputText.value,myColor:myColor});
+                app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:`${file.name}: ${returnFileSize(file.size)}`,myColor:myColor});
             });
             reader.readAsDataURL(myBlob);
         });
