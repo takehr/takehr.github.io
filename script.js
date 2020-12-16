@@ -19,7 +19,7 @@ const buttonSendText = document.getElementById('button-send-text');
 const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
 const inputFiles = document.getElementById('input-files');
-$("exampleModalCenter").modal("show");
+$("#exampleModalCenter").modal("show");
 buttonSendText.onclick= () => {
     const file = inputFiles.files[0];
     if(file){
@@ -92,6 +92,7 @@ function geoFindMe(){
             });
             }
         }).then(() => {
+                $("#exampleModalCenter").modal("hide");
                 if(!roomId){
                     roomId=window.peer.id;
                     database.ref("peers/"+window.peer.id).set({
@@ -151,7 +152,7 @@ function geoFindMe(){
         alert(error.message);
     }
     if(!navigator.geolocation){
-        alert("can't use");
+        alert("It seems that geolocation is not available in your browser.");
     }else{
         navigator.geolocation.getCurrentPosition(success,error);
     }
