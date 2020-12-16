@@ -38,7 +38,7 @@ buttonSendText.onclick= () => {
         });
     }else{
         room.send(inputText.value);
-        app.chats.push({message:inputText.value, peerId:window.peer.id});
+        app.chats.push({message:inputText.value, peerId:window.peer.id,own:true});
     }
     inputText.value=null;
     inputFiles.value=null;
