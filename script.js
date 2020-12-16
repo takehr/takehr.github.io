@@ -148,3 +148,4 @@ function geoFindMe(){
   });
   peer.on('error', console.error);
 })();
+//lineのふるふる機能も複数人がヒットすることはあまりない？
