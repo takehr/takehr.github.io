@@ -83,7 +83,7 @@ function returnFileSize(number) {
 }
 //dokutoku na design + iwakan nakusu
 function geoFindMe(){
-    alert("asdf");
+    //alert("asdf");
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -149,8 +149,8 @@ function geoFindMe(){
                     }
                 });
             });
-        alert(window.peer.id);
-        alert(latitude+" "+longitude);
+        //alert(window.peer.id);
+        //alert(latitude+" "+longitude);
       }
     function error(error){
         alert(error.message);
