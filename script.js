@@ -19,15 +19,39 @@ const buttonSendText = document.getElementById('button-send-text');
 const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
 const inputFiles = document.getElementById('input-files');
+const myColor=Math.floor(Math.random() * Math.floor(360));
+$("#exampleModalCenter").modal({
+    keyboard:false,
+    backdrop:'static',
+    show:true
+});
 buttonSendText.onclick= () => {
-    room.send(inputText.value);
-    app.chats.push({message:inputText.value, peerId:window.peer.id});
-    document.querySelector("#app div:last-child").scrollIntoView(false);
+    const file = inputFiles.files[0];
+    if(file){
+        file.arrayBuffer().then((buffer)=>{
+            room.send({name:file.name,data:buffer,message:`${file.name}: ${returnFileSize(file.size)}`,peerId:window.peer.id,myColor:myColor});
+            const myBlob = new Blob([buffer]);
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:`${file.name}: ${returnFileSize(file.size)}`,myColor:myColor});
+            });
+            reader.readAsDataURL(myBlob);
+        });
+    }else{
+        room.send({message:inputText.value,myColor:myColor});
+        app.chats.push({message:inputText.value, peerId:window.peer.id,own:true,myColor:myColor});
+    }
+    inputText.value=null;
+    inputFiles.value=null;
 }
+window.onresize=function(){
+    document.querySelector("#app").setAttribute("style","height:"+(window.innerHeight-60)+"px; overflow:scroll;");
+};
+
 buttonSendFiles.onclick= () => {
 //    console.log(window.webkitURL.createObjectURL(inputFiles.files));
-      const file = inputFiles.files[0];
-      file.arrayBuffer().then((buffer)=>room.send({name:file.name,data:buffer}));
+//      const file = inputFiles.files[0];
+//      file.arrayBuffer().then((buffer)=>room.send({name:file.name,data:buffer}));
 //    room.send(inputFiles.files);
 //    const file = inputFiles.files[0];
 //    var fileReader = new FileReader() ;
@@ -39,12 +63,12 @@ buttonSendFiles.onclick= () => {
   
 //  	var file = element.files[0] ;
     //fileReader.readAsText( file ) ;
-  	//fileReader.readAsBinaryString( file ) ;	// 試してみよう！
+  	//fileReader.readAsBinaryString( file ) ;	
 };
 inputFiles.onchange= () => {
     const files=inputFiles.files;
     for (let i=0;i<files.length;i++){
-        console.log(`${files[i].name}: ${returnFileSize(files[i].size)}`);
+        inputText.value = `${files[i].name}: ${returnFileSize(files[i].size)}`;
     }
 };
 
@@ -59,7 +83,7 @@ function returnFileSize(number) {
 }
 //dokutoku na design + iwakan nakusu
 function geoFindMe(){
-    alert("asdf");
+    //alert("asdf");
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -72,6 +96,7 @@ function geoFindMe(){
             });
             }
         }).then(() => {
+                $("#exampleModalCenter").modal("hide");
                 if(!roomId){
                     roomId=window.peer.id;
                     database.ref("peers/"+window.peer.id).set({
@@ -91,8 +116,8 @@ function geoFindMe(){
                   stream: null,
                 });
                 room.on('data', ({ data, src }) => {
-                    if(typeof(data)==="string"){
-                        app.chats.push({message:data, peerId:src, own:false});
+                    if(!data.name){
+                        app.chats.push({message:data.message, peerId:src, own:false,myColor:data.myColor});
                     }else{
                         const myBlob = new Blob([data.data]);
 //                      console.log(myBlob);
@@ -102,8 +127,7 @@ function geoFindMe(){
 
                       const reader = new FileReader();
                       reader.addEventListener("load", function () {
-                          app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false});
-                          document.querySelector("#app div:last-child").scrollIntoView(false);
+                          app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false,message:data.message,myColor:data.myColor});
                       });
 //                      if (file) {
                       reader.readAsDataURL(myBlob);
@@ -125,14 +149,14 @@ function geoFindMe(){
                     }
                 });
             });
-        alert(window.peer.id);
-        alert(latitude+" "+longitude);
+        //alert(window.peer.id);
+        //alert(latitude+" "+longitude);
       }
     function error(error){
         alert(error.message);
     }
     if(!navigator.geolocation){
-        alert("can't use");
+        alert("It seems that geolocation is not available in your browser.");
     }else{
         navigator.geolocation.getCurrentPosition(success,error);
     }
