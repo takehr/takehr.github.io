@@ -63,7 +63,7 @@ buttonSendFiles.onclick= () => {
   
 //  	var file = element.files[0] ;
     //fileReader.readAsText( file ) ;
-  	//fileReader.readAsBinaryString( file ) ;	// 試してみよう！
+  	//fileReader.readAsBinaryString( file ) ;	
 };
 inputFiles.onchange= () => {
     const files=inputFiles.files;
