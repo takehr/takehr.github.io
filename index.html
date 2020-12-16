@@ -36,7 +36,7 @@
       </div>
     </div>
         <div style="min-height:100vh;">
-		<div id="app" style="position:absolute; height: calc(100vh - 60px); overflow:scroll; width:100%;">
+		<div id="app" style="position:relative; height: calc(100vh - 60px); overflow:scroll; width:100%;">
                     <my-chat-box v-for="chat in chats":message="chat.message" :peer-id="chat.peerId" :own="chat.own" :base64="chat.base64" :file-name="chat.fileName"></my-chat-box>
 		</div>
                 <div id="input-box" style="height:60px; width:100%; position:fixed; bottom:0px; background:#f0f0f0; padding:8px 0px 0px">
