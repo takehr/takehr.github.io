@@ -90,7 +90,7 @@
                 }
               },
               template: `
-                <div class="rounded-pill" :style="'background-color: hsla('+myColor+',50%,50%,0.6); position:relative; max-width:76%; '+own?'right:0px;':''">
+                <div class="rounded-pill" :style="'background-color: hsla('+myColor+',50%,50%,0.6); position:relative; max-width:76%; '+(own?'right:0px;':'')">
                     <h5 :style="'color:white'">{{peerId}}</h5>
                     <h2 v-if="message" :style="'color:white'">{{message}}</h2>
                     <h2><a v-if="fileName" :download="fileName" :href="base64">{{fileName}}</a></h2>
