@@ -82,12 +82,17 @@
                     type:String,
                     default:"",
                     required:false
+                },
+                myColor:{
+                    type:Int,
+                    default:Math.floor(Math.random() * Math.floor(360)),
+                    required:false
                 }
               },
               template: `
-                <div style="background-color: hsla(180,50%,50%,0.1)">
-                    <h3 style="color: hsla(180,50%,30%,0.8)">{{peerId}}</h3>
-                    <h2 v-if="message" style="color: hsla(180,50%,30%,0.8)">{{message}}</h2>
+                <div style="background-color: hsla(myColor,50%,50%,0.1)">
+                    <h3 style="color: hsla(myColor,50%,30%,0.8)">{{peerId}}</h3>
+                    <h2 v-if="message" style="color: hsla(myColor,50%,30%,0.8)">{{message}}</h2>
                     <h2><a v-if="fileName" :download="fileName" :href="base64">{{fileName}}</a></h2>
                 </div>`
             };
