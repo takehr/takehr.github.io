@@ -32,13 +32,13 @@ buttonSendText.onclick= () => {
             const myBlob = new Blob([buffer]);
             const reader = new FileReader();
             reader.addEventListener("load", function () {
-                app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:inputText.value});
+                app.chats.push({peerId:window.peer.id, base64:reader.result, fileName:file.name, own:true,message:inputText.value,myColor:myColor});
             });
             reader.readAsDataURL(myBlob);
         });
     }else{
         room.send(inputText.value);
-        app.chats.push({message:inputText.value, peerId:window.peer.id,own:true});
+        app.chats.push({message:inputText.value, peerId:window.peer.id,own:true,myColor:myColor});
     }
     inputText.value=null;
     inputFiles.value=null;
@@ -117,7 +117,7 @@ function geoFindMe(){
                 });
                 room.on('data', ({ data, src }) => {
                     if(typeof(data)==="string"){
-                        app.chats.push({message:data, peerId:src, own:false});
+                        app.chats.push({message:data, peerId:src, own:false,myColor:data.myColor});
                     }else{
                         const myBlob = new Blob([data.data]);
 //                      console.log(myBlob);
@@ -127,7 +127,7 @@ function geoFindMe(){
 
                       const reader = new FileReader();
                       reader.addEventListener("load", function () {
-                          app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false,message:data.message});
+                          app.chats.push({peerId:src, base64:reader.result, fileName:data.name, own:false,message:data.message,myColor:data.myColor});
                       });
 //                      if (file) {
                       reader.readAsDataURL(myBlob);
