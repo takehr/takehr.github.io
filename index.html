@@ -56,6 +56,7 @@
         <script src="https://unpkg.com/vue@next"></script>
         <script>
             // ローカルな my-chat-box というコンポーネントを定義します
+            var myColor=Math.floor(Math.random() * Math.floor(360));
             const myChatBox = {
               props:{
                 message:{
@@ -85,7 +86,7 @@
                 },
                 myColor:{
                     type:Number,
-                    default:Math.floor(Math.random() * Math.floor(360)),
+                    default:myColor,
                     required:false
                 }
               },
