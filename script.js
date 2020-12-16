@@ -29,7 +29,7 @@ buttonSendText.onclick= () => {
     const file = inputFiles.files[0];
     if(file){
         file.arrayBuffer().then((buffer)=>{
-            room.send({name:file.name,data:buffer,message:inputText.value,peerId:window.peer.id});
+            room.send({name:file.name,data:buffer,message:inputText.value,peerId:window.peer.id,myColor:myColor});
             const myBlob = new Blob([buffer]);
             const reader = new FileReader();
             reader.addEventListener("load", function () {
@@ -38,7 +38,7 @@ buttonSendText.onclick= () => {
             reader.readAsDataURL(myBlob);
         });
     }else{
-        room.send(inputText.value);
+        room.send({message:inputText.value,myColor:myColor});
         app.chats.push({message:inputText.value, peerId:window.peer.id,own:true,myColor:myColor});
     }
     inputText.value=null;
@@ -117,8 +117,8 @@ function geoFindMe(){
                   stream: null,
                 });
                 room.on('data', ({ data, src }) => {
-                    if(typeof(data)==="string"){
-                        app.chats.push({message:data, peerId:src, own:false,myColor:data.myColor});
+                    if(!data.name){
+                        app.chats.push({message:data.message, peerId:src, own:false,myColor:data.myColor});
                     }else{
                         const myBlob = new Blob([data.data]);
 //                      console.log(myBlob);
