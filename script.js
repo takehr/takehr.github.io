@@ -19,6 +19,7 @@ const buttonSendText = document.getElementById('button-send-text');
 const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
 const inputFiles = document.getElementById('input-files');
+const myColor=Math.floor(Math.random() * Math.floor(360));
 $("#exampleModalCenter").modal({
     keyboard:false,
     backdrop:'static',
