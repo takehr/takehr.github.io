@@ -90,9 +90,9 @@
                 }
               },
               template: `
-                <div style="background-color: hsla(myColor,50%,50%,0.1)">
-                    <h3 style="color: hsla(myColor,50%,30%,0.8)">{{peerId}}</h3>
-                    <h2 v-if="message" style="color: hsla(myColor,50%,30%,0.8)">{{message}}</h2>
+                <div :style="'background-color: hsla('+myColor+',50%,50%,0.1);'">
+                    <h3 :style="'background-color: hsla('+myColor+',50%,50%,0.1);'">{{peerId}}</h3>
+                    <h2 v-if="message" :style="'background-color: hsla('+myColor+',50%,50%,0.1);'">{{message}}</h2>
                     <h2><a v-if="fileName" :download="fileName" :href="base64">{{fileName}}</a></h2>
                 </div>`
             };
