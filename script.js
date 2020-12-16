@@ -45,8 +45,7 @@ buttonSendText.onclick= () => {
     inputFiles.value=null;
 }
 window.onresize=function(){
-
-document.querySelector("#app").setAttribute("style","height:"+(window.innerHeight-60)+"px; overflow:scroll;");
+    document.querySelector("#app").setAttribute("style","height:"+(window.innerHeight-60)+"px; overflow:scroll;");
 };
 
 buttonSendFiles.onclick= () => {
