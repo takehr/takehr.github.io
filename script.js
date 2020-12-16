@@ -19,8 +19,7 @@ const buttonSendText = document.getElementById('button-send-text');
 const buttonSendFiles = document.getElementById('button-send-files');
 const inputText = document.getElementById('input-text');
 const inputFiles = document.getElementById('input-files');
-const myModal = document.getElementById("exampleModalCenter");
-myModal.modal("show");
+$("exampleModalCenter").modal("show");
 buttonSendText.onclick= () => {
     const file = inputFiles.files[0];
     if(file){
