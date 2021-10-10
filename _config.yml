@@ -30,8 +30,10 @@ twitter_username: jekyllrb
 github_username:  takehr
   
 # Build settings
-remote_theme: ronv/sidey
+remote_theme: jekyll/minima
 
+skin:
+  classic
 plugins:
   - jekyll-feed
 
