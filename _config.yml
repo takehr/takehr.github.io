@@ -30,7 +30,7 @@ twitter_username: jekyllrb
 github_username:  takehr
   
 # Build settings
-theme: songzivong/dark-minima
+remote_theme: songzivong/dark-minima
 plugins:
   - jekyll-feed
 
