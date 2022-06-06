@@ -32,7 +32,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # Build settings
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+  - jekyll-remote-theme # add this line to the plugins list if you already have one
 
 #remote_theme: jekyll/minima
 
@@ -42,8 +42,8 @@ plugins:
 plugins:
   - jekyll-feed
 markdown: kramdown
-kramdown:
-  math_engine: mathjax
+#kramdown:
+#  math_engine: mathjax
 
 
 # Exclude from processing.
