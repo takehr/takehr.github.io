@@ -37,6 +37,9 @@ minima:
 
 plugins:
   - jekyll-feed
+#kramdown:
+#  math_engine: mathjax
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
